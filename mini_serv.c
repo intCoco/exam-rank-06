@@ -52,11 +52,11 @@ void share_msg(int fd){
 		BUFF[ids[fd]][idx[ids[fd]]] = MSG[i];
 		idx[ids[fd]]++;
 		if (MSG[i] == '\n') {
+			bzero(ANNOUNCE, sizeof(ANNOUNCE));
 			sprintf(ANNOUNCE, "client %d: %s", ids[fd], BUFF[ids[fd]]);
 			announcement(ANNOUNCE, fd);
 			bzero(BUFF[ids[fd]], idx[ids[fd]]);
 			idx[ids[fd]] = 0;
-			bzero(ANNOUNCE, sizeof(ANNOUNCE));
 		}
 	}
 	bzero(MSG, sizeof(MSG));
