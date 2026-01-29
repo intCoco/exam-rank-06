@@ -9,8 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char*	ARG = "Wrong number of arguments\n";
-char*	FATAL = "Fatal error \n";
+char*	ARG = "Wrong number of arguments\n"; // copier ce qui est demandé dans le sujet
+char*	FATAL = "Fatal error \n"; // copier ce qui est demandé dans le sujet
 
 char ANNOUNCE[600020], // un buffer pour mettre les annonces 600020 important pour -Werror
 	MSG[600000], // un buffer pour stocker ce que recv recoit
@@ -158,22 +158,22 @@ int main(int ac, char **av) {
 		err(ARG);
 	}
 
-	// socket create and verification 										      	    			    		//  DEBUT COPIE MAIN
-	sockfd = socket(AF_INET, SOCK_STREAM, 0);							      		    			    	//
-	if (sockfd == -1)															              	    			    	  //
-		err(FATAL);																                	    			    	  // changer les conditions du main pour seulement err fatal
-	bzero(&servaddr, sizeof(servaddr));										      	    			    		//
+	// socket create and verification 										      	//  DEBUT COPIE MAIN
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);							      		//
+	if (sockfd == -1)															    //
+		err(FATAL);																    // changer les conditions du main pour seulement err fatal
+	bzero(&servaddr, sizeof(servaddr));										      	//
 
-	// assign IP, PORT														              	    			    	  //
-	servaddr.sin_family = AF_INET; 												      	    			    	  //
-	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1    	    			    	  //
-	servaddr.sin_port = htons(atoi(av[1])); 								    		    			    	// changer 8081 par atoi de av[1]
+	// assign IP, PORT														        //
+	servaddr.sin_family = AF_INET; 												    //
+	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1    	    			//
+	servaddr.sin_port = htons(atoi(av[1])); 								    	// changer 8081 par atoi de av[1]
   
-	// Binding newly created socket to given IP and verification 	                  //
+	// Binding newly created socket to given IP and verification 	                //
 	if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) == -1) // changer le != 0 pour == -1
 		err(FATAL);
-	if (listen(sockfd, 10) == -1) 												                          // changer le != 0 pour == -1
-		err(FATAL);															                                    	// FIN COPIE 
+	if (listen(sockfd, 10) == -1) 												    // changer le != 0 pour == -1
+		err(FATAL);															        // FIN COPIE 
 
 	
 	mini_serv();
