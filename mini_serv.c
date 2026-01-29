@@ -10,7 +10,7 @@
 
 char*	ARG = "Wrong number of arguments\n";
 char*	FATAL = "Fatal error \n";
-char ANNOUNCE[600000], MSG[600000], BUFF[1024][600000];
+char ANNOUNCE[600020], MSG[600000], BUFF[1024][600000];
 int sockfd, connfd, nfds, id, ids[1024], idx[1024] = {0};
 struct sockaddr_in servaddr, cli; 
 fd_set fds, rfds;
